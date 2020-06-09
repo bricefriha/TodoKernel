@@ -42,11 +42,13 @@ TodoKernel is an API ready to go allowing you to create todolists. Then all you 
 
 	``` npm install ```
 	
-3. Now all you have to do is starting your app
+3. Then, to make sure to get access to the project config, rename ``config-dist`` to ``config``
+	
+4. Now all you have to do is starting your app
 	
 	``` npm start ```
 
-4. Finally, the most important part: Enjoy! 😀
+5. Finally, the most important part: Enjoy! 😀
 
 
 ## Api methods
@@ -168,7 +170,7 @@ with an email
 	
 }
 ```
-
+---
 ### Delete current user 🗑🙍🏽‍♂️🙍🏽‍♀️
 
 > ⚠ **You must use a bearer token to perform this action**
