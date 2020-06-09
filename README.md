@@ -158,7 +158,7 @@ TodoKernel is an API ready to go allowing you to create todolists. Then all you 
 	
 }
 ```
-
+---
 ### Delete current user 🗑🙍🏽‍♂️🙍🏽‍♀️
 
 > ⚠ **You must use a bearer token to perform this action**
