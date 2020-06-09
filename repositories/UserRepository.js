@@ -18,9 +18,20 @@ class UserRepository {
     }
 
     // To Authentificate a user
-    async authenticate({ username, password }) {
-        // Get the user
-        const user = await User.findOne({ username }).populate({path:'todolists', populate: { path: 'todolists' }});
+    async authenticate({ username, email, password }) {
+        // Try to know if the user try to login with his email
+        if (email) {
+
+            // Get the user from his email
+            var user = await User.findOne({ email }).populate({path:'todolists', populate: { path: 'todolists' }});
+        } else if (username) {
+
+            // Get the user from his username
+            var user = await User.findOne({ username }).populate({path:'todolists', populate: { path: 'todolists' }});
+        } else {
+            throw "email or username missing";
+        }
+        
 
         // Verify the input
         if (user && bcrypt.compareSync(password, user.hash)) {
@@ -30,7 +41,8 @@ class UserRepository {
 
             // Return all the information needed
             return {
-                user: user.username,
+                username: user.username,
+                email: user.email,
                 firstName: user.firstName,
                 lastName: user.lastName,
                 todolists: user.todolists,
@@ -54,6 +66,7 @@ class UserRepository {
 
         return {
             user: currentUser.username,
+            email: currentUser.email,
             firstName: currentUser.firstName,
             lastName: currentUser.lastName,
             creationDate: currentUser.createdDate,
@@ -68,6 +81,7 @@ class UserRepository {
         }
     
         const user = new User(userParam);
+
     
         // hash password
         if (userParam.password) {
@@ -75,10 +89,10 @@ class UserRepository {
         }
     
         // save user
-        await user.save();
+        var userNew = await user.save();
 
         // Login the user
-        return this.authenticate({ username: userParam.username, password: userParam.password });
+        return this.authenticate({ username: userParam.username, password: userParam.password  });
     }
     
     // Update a user

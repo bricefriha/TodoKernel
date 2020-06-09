@@ -5,25 +5,25 @@ TodoKernel is an API ready to go allowing you to create todolists. Then all you 
 
 ---
 ## Index 📖
-- [Todo Kernel](#todo-kernel)
-- [Installation](#installation)
-- [Api methods](#api-methods)
+- [TodoKernel](#todokernel)
   - [Index 📖](#index-)
-  - [Registration 🔑](#registration-)
-  - [Authentification 🙋🏽‍♂️🙋🏽‍♀️](#authentification-️️)
-  - [Update user's informations 🙍🏽‍♂️🙍🏽‍♀️✍🏽](#update-users-informations-️️)
-  - [Get user's informations 🙍🏽‍♂️🙍🏽‍♀️](#get-users-informations-️️)
-  - [Delete current user 🗑🙍🏽‍♂️🙍🏽‍♀️](#delete-current-user-️️)
-  - [Create a todolist 📝](#create-a-todolist-)
-  - [Add an item to a todolist ✏](#add-an-item-to-a-todolist-)
-  - [Delete an item from a todolist 🗑✏](#delete-an-item-from-a-todolist-)
-  - [Get all your todolists 📚](#get-all-your-todolists-)
-  - [Check or uncheck a todolist item ✅❎📄](#check-or-uncheck-a-todolist-item-)
-  - [Rename a todolist item ✍🏽📄](#rename-a-todolist-item-)
-  - [Delete a todolist item 🗑📚](#delete-a-todolist-item-)
-  - [Rename a todolist item ✍🏽📚](#rename-a-todolist-item--1)
-  - [Delete a todolist 🗑📚](#delete-a-todolist-)
-  - [Delete all current's user todolists 🗑📚📚📚📚](#delete-all-currents-user-todolists-)
+  - [Installation](#installation)
+  - [Api methods](#api-methods)
+    - [Registration 🔑](#registration-)
+    - [Authentification 🙋🏽‍♂️🙋🏽‍♀️](#authentification-️️)
+    - [Update user's informations 🙍🏽‍♂️🙍🏽‍♀️✍🏽](#update-users-informations-️️)
+    - [Get user's informations 🙍🏽‍♂️🙍🏽‍♀️](#get-users-informations-️️)
+    - [Delete current user 🗑🙍🏽‍♂️🙍🏽‍♀️](#delete-current-user-️️)
+    - [Create a todolist 📝](#create-a-todolist-)
+    - [Add an item to a todolist ✏](#add-an-item-to-a-todolist-)
+    - [Delete an item from a todolist 🗑✏](#delete-an-item-from-a-todolist-)
+    - [Get all your todolists 📚](#get-all-your-todolists-)
+    - [Check or uncheck a todolist item ✅❎📄](#check-or-uncheck-a-todolist-item-)
+    - [Rename a todolist item ✍🏽📄](#rename-a-todolist-item-)
+    - [Delete a todolist item 🗑📚](#delete-a-todolist-item-)
+    - [Rename a todolist item ✍🏽📚](#rename-a-todolist-item--1)
+    - [Delete a todolist 🗑📚](#delete-a-todolist-)
+    - [Delete all current's user todolists 🗑📚📚📚📚](#delete-all-currents-user-todolists-)
 
 ---
 ## Installation
@@ -63,6 +63,7 @@ TodoKernel is an API ready to go allowing you to create todolists. Then all you 
     "firstName": "BriceFriha",
     "lastName": "BriceFriha",
     "username": "BriceFriha",
+    "email": "brice.friha@email.com",
     "password": "pwd"
 }
 ```
@@ -73,6 +74,7 @@ TodoKernel is an API ready to go allowing you to create todolists. Then all you 
     "user": "BriceFriha",
     "firstName": "BriceFriha",
     "lastName": "BriceFriha",
+    "email": "brice.friha@email.com",
     "todolists": [
         // user's todolists
     ],
@@ -88,9 +90,18 @@ TodoKernel is an API ready to go allowing you to create todolists. Then all you 
 **route**: ``"/users/authenticate"``
 
 **body**: 
+
+with an username
 ``` 
 {
     "username": "BriceFriha",
+    "password": "pwd"
+}
+```
+with an email
+``` 
+{
+    "email": "brice.friha@email.com",
     "password": "pwd"
 }
 ```
@@ -123,6 +134,7 @@ TodoKernel is an API ready to go allowing you to create todolists. Then all you 
 	"username": "JustinC",
 	"firstName": "Justin",
 	"lastName": "Case",
+        "email": "brice.friha@email.com",
     	"newPassword": "TheNewPassword",
 	"password": "TheOldPassword"
 	
