@@ -3,7 +3,7 @@ You want to create a todolist app without bothering too much with a backend code
 
 TodoKernel is an API ready to go allowing you to create todolists. Then all you have to do  is to create a sweat little UI that fit your need! 😊 ("have to do", "todo" you get it? 😅)
 
-### Index 📖
+## Index 📖
 - [Todo Kernel](#todo-kernel)
 - [Api methods](#api-methods)
   - [Index 📖](#index-)
@@ -34,7 +34,7 @@ TodoKernel is an API ready to go allowing you to create todolists. Then all you 
 	
 	```  git clone https://github.com/bricefriha/TodoKernel.git ```
 	
-	If you don't have git installed you can still [download](/bricefriha/TodoKernel/archive/master.zip) the project.
+	If you don't have git installed you can still [download](https://github.com/bricefriha/TodoKernel/archive/master.zip) the project.
 	
 2. Next you'll have to install all the required npm packages. Thus, move to the TodoKernel folder an run this command:
 
