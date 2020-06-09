@@ -98,12 +98,12 @@ TodoKernel is an API ready to go allowing you to create todolists. Then all you 
 	"username": "JustinC",
 	"firstName": "Justin",
 	"lastName": "Case",
-    "newPassword": "TheNewPassword",
+    	"newPassword": "TheNewPassword",
 	"password": "TheOldPassword"
 	
 }
 ```
-> ℹ : If you don't want to modify the password, just don't fill the "newPassword" field
+> ℹ  If you don't want to modify the password, just don't fill the "newPassword" field
 
 **response**: 
 ```
