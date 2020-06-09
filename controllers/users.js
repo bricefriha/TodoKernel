@@ -61,6 +61,12 @@ router.delete('/cleanup', (req, res) => {
         })
         .catch(error => res.status(500).json({status:"Error 500", message: error}));
 });
+// Send an email to recover the email
+router.post('/recover', (req, res) => {
+    repository.sendRecoveryEmail(req.body.email)
+        .then(result => res.json({status:"OK", message: result}))
+        .catch(error => res.status(500).json({status:"Error 500", message: error}));
+});
 
 
 module.exports = router;

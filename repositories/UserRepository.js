@@ -6,6 +6,8 @@ const jwt = require('jsonwebtoken');
 // Integrate Bcrypt
 const bcrypt = require('bcryptjs');
 
+const nodemailer = require('nodemailer');
+
 // Import User model
 const User = require('../models/User');
 const TodoList = require('../models/TodoList');
@@ -13,7 +15,7 @@ const TodoList = require('../models/TodoList');
 class UserRepository {
 
     // Constructor
-    constructor (model) {
+    constructor(model) {
         this.model = model;
     }
 
@@ -23,15 +25,15 @@ class UserRepository {
         if (email) {
 
             // Get the user from his email
-            var user = await User.findOne({ email }).populate({path:'todolists', populate: { path: 'todolists' }});
+            var user = await User.findOne({ email }).populate({ path: 'todolists', populate: { path: 'todolists' } });
         } else if (username) {
 
             // Get the user from his username
-            var user = await User.findOne({ username }).populate({path:'todolists', populate: { path: 'todolists' }});
+            var user = await User.findOne({ username }).populate({ path: 'todolists', populate: { path: 'todolists' } });
         } else {
             throw "email or username missing";
         }
-        
+
 
         // Verify the input
         if (user && bcrypt.compareSync(password, user.hash)) {
@@ -50,12 +52,11 @@ class UserRepository {
             };
         }
     }
-    
+
     // Get a single user
     async getById(id) {
         var currentUser;
-        try
-        {
+        try {
             // Get the current user
             currentUser = await User.findById(id);
         }
@@ -72,35 +73,39 @@ class UserRepository {
             creationDate: currentUser.createdDate,
         };
     }
-    
+
     // Create a user
     async create(userParam) {
-        // validate
+        // Verify that the username is not already taken
         if (await User.findOne({ username: userParam.username })) {
             throw 'Username "' + userParam.username + '" is already taken';
         }
-    
+        // Verify that the email adress is not already taken
+        if (await User.findOne({ email: userParam.email })) {
+            throw 'Email adress "' + userParam.email + '" is already taken';
+        }
+
         const user = new User(userParam);
 
-    
+
         // hash password
         if (userParam.password) {
             user.hash = bcrypt.hashSync(userParam.password, 10);
         }
-    
+
         // save user
-        var userNew = await user.save();
+        await user.save();
 
         // Login the user
-        return this.authenticate({ username: userParam.username, password: userParam.password  });
+        return this.authenticate({ username: userParam.username, password: userParam.password });
     }
-    
+
     // Update a user
     async update(id, userParam) {
-        
+
         // Get the current user 
         const user = await User.findById(id);
-    
+
         // validate
         if (user && bcrypt.compareSync(userParam.password, user.hash)) {
 
@@ -108,7 +113,7 @@ class UserRepository {
             if (user.username !== userParam.username && await User.findOne({ username: userParam.username })) {
                 throw 'Username "' + userParam.username + '" is already taken';
             }
-        
+
             // hash the new password if it was filled
             if (userParam.newPassword) {
                 userParam.hash = bcrypt.hashSync(userParam.newPassword, 10);
@@ -117,25 +122,25 @@ class UserRepository {
                 // Use the previous hashed password
                 userParam.hash = user.hash;
             }
-        
+
             // copy userParam properties to user
             Object.assign(user, userParam);
-            
+
             // Update the user
             await user.save();
 
         } else {
             throw 'Password incorrect';
         }
-        
+
     }
-    
+
     // Delete a user
     async _delete(id) {
         await User.findByIdAndRemove(id);
     }
     // Add a todolist
-    async addTodolist (todolistId, id) {
+    async addTodolist(todolistId, id) {
         // Get the user
         const user = await User.findById(id);
 
@@ -146,12 +151,48 @@ class UserRepository {
         user.save();
     }
     // Get every user's todolists
-    async getTodolists (id) {
+    async getTodolists(id) {
 
         // Return the list
-        return TodoList.find({user: id}).populate({path:'items', populate: { path: 'items' }});
+        return TodoList.find({ user: id }).populate({ path: 'items', populate: { path: 'items' } });
+
+    }
+    // Send an email to recover a password
+    async sendRecoveryEmail(emailUser) {
+        const user = User.findOne({ email: emailUser });
+
+        if (user) {
+            // Create the transporter
+            const transporter = nodemailer.createTransport({
+                service: config.serviceEmail,
+                auth: {
+                    user: config.Email,
+                    pass: config.PasswordEmail
+                }
+            });
+
+            // Set the email
+            const mailOptions = {
+                from: config.Email,
+                to: emailUser,
+                subject: 'Sending Email using Node.js',
+                text: 'That was easy! 😁'
+            };
+
+            // Send the email
+            await transporter.sendMail(mailOptions, function (error, info) {
+                if (error) {
+                    throw error;
+                } else {
+                    return 'Email sent: ' + info.response;
+                }
+            });
+        } else {
+            throw "There is no user link to this email";
+        }
+
 
     }
 }
 
-module.exports = new UserRepository (User);
+module.exports = new UserRepository(User);
