@@ -24,13 +24,13 @@ router.post('/register', (req, res) => {
 // Get the current user
 router.get('/current', (req, res) => {
     repository.getById(req.user.sub)
-        .then(user => user ? res.json(user) : res.sendStatus(404))
+        .then(user => user ? res.json(user) : res.status(404).json({status:"Error 404"}))
         .catch(error => res.status(500).json({status:"Error 500", message: error}));
 });
 // Get a single user
 router.get('/:id', (req, res) => {
     repository.getById(req.params.id)
-        .then(user => user ? res.json(user) : res.sendStatus(404))
+        .then(user => user ? res.json(user) :  res.status(404).json({status:"Error 404"}))
         .catch(error => res.status(500).json({status:"Error 500", message: error}));
 });
 // Update a user
