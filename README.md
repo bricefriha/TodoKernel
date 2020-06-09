@@ -1,19 +1,30 @@
+# Todo Kernel 
+You want to create a todolist app without bothering too much with a backend code. Here's how TodoKernel can help you! 😃
+
+TodoKernel is an API ready to go allowing you to create todolists. Then all you have to do  is to create a sweat little UI that fit your need! 😊 ("have to do", "todo" you get it? 😅)
+
 # Api methods
 ## Index 📖
-- [Registration 🔑](#registration-)
-- [Authentification 🙋🏽‍♂️🙋🏽‍♀️](#authentification-)
-- [Update user's informations 🙍🏽‍♂️🙍🏽‍♀️✍🏽](#update-users-informations-)
-- [Get user's informations 🙍🏽‍♂️🙍🏽‍♀️](#get-users-informations-)
-- [Delete current user 🗑 🙍🏽‍♂️🙍🏽‍♀️](#delete-current-user-️️)
-- [Create a todolist 📝](#create-a-todolist-)
-- [Add an item to a todolist ✏](#add-an-item-to-a-todolist-)
-- [Delete an item from a todolist 🗑✏](#delete-an-item-from-a-todolist-)
-- [Get all your todolists 📚](#get-all-your-todolists-)
-- [Check or uncheck a todolist item ✅❎📄](#check-or-uncheck-a-todolist-item-)
-- [Rename a todolist item ✍🏽📄](#rename-a-todolist-item-)
-- [Delete a todolist item 🗑📚](#delete-a-todolist-item-)
-- [Delete a todolist 🗑📚](#delete-a-todolist-)
-- [Delete all todolists 🗑📚📚📚📚](#delete-all-todolists-)
+- [Todo Kernel](#todo-kernel)
+- [Api methods](#api-methods)
+  - [Index 📖](#index-)
+  - [Registration 🔑](#registration-)
+  - [Authentification 🙋🏽‍♂️🙋🏽‍♀️](#authentification-️️)
+  - [Update user's informations 🙍🏽‍♂️🙍🏽‍♀️✍🏽](#update-users-informations-️️)
+  - [Get user's informations 🙍🏽‍♂️🙍🏽‍♀️](#get-users-informations-️️)
+  - [Delete current user 🗑🙍🏽‍♂️🙍🏽‍♀️](#delete-current-user-️️)
+  - [Create a todolist 📝](#create-a-todolist-)
+  - [Add an item to a todolist ✏](#add-an-item-to-a-todolist-)
+  - [Delete an item from a todolist 🗑✏](#delete-an-item-from-a-todolist-)
+  - [Get all your todolists 📚](#get-all-your-todolists-)
+  - [Check or uncheck a todolist item ✅❎📄](#check-or-uncheck-a-todolist-item-)
+  - [Rename a todolist item ✍🏽📄](#rename-a-todolist-item-)
+  - [Delete a todolist item 🗑📚](#delete-a-todolist-item-)
+  - [Rename a todolist item ✍🏽📚](#rename-a-todolist-item--1)
+  - [Delete a todolist 🗑📚](#delete-a-todolist-)
+  - [Delete all current's user todolists 🗑📚📚📚📚](#delete-all-currents-user-todolists-)
+
+---
 
 ## Registration 🔑
 
@@ -24,9 +35,9 @@
 **body**:
 ```
 {
-    "firstName": "test",
-    "lastName": "test",
-    "username": "test",
+    "firstName": "BriceFriha",
+    "lastName": "BriceFriha",
+    "username": "BriceFriha",
     "password": "pwd"
 }
 ```
@@ -43,7 +54,7 @@
     "token": "<your token>"
 }
 ```
-
+---
 
 ## Authentification 🙋🏽‍♂️🙋🏽‍♀️
 
@@ -71,6 +82,8 @@
     "token": "<your token>"
 }
 ```
+---
+
 ## Update user's informations 🙍🏽‍♂️🙍🏽‍♀️✍🏽
 
 > ⚠ **You must use a bearer token to perform this action**
@@ -97,7 +110,7 @@
     "result": "changes Saved"
 }
 ```
-
+---
 ## Get user's informations 🙍🏽‍♂️🙍🏽‍♀️
 
 > ⚠ **You must use a bearer token to perform this action**
@@ -132,6 +145,7 @@
     "result": " deleted"
 }
 ```
+---
 ## Create a todolist 📝
 
 > ⚠ **You must use a bearer token to perform this action**
@@ -157,6 +171,7 @@
     "__v": 0
 }
 ```
+---
 ## Add an item to a todolist ✏
 
 > ⚠ **You must use a bearer token to perform this action**
@@ -184,6 +199,7 @@
     "__v": 0
 }
 ```
+---
 ## Delete an item from a todolist 🗑✏
 
 > ⚠ **You must use a bearer token to perform this action**
@@ -199,7 +215,7 @@
     "result": " deleted"
 }
 ```
-
+---
 ## Get all your todolists 📚
 
 > ⚠ **You must use a bearer token to perform this action**
@@ -245,6 +261,7 @@
     }
 ]
 ```
+---
 ## Check or uncheck a todolist item ✅❎📄
 
 > ⚠ **You must use a bearer token to perform this action**
@@ -259,6 +276,7 @@
     "status": "OK"
 }
 ```
+---
 ## Rename a todolist item ✍🏽📄
 
 > ⚠ **You must use a bearer token to perform this action**
@@ -280,6 +298,7 @@
 	"name": "Fries"	
 }
 ```
+---
 ## Delete a todolist item 🗑📚
 
 > ⚠ **You must use a bearer token to perform this action**
@@ -295,6 +314,7 @@
     "result": " deleted"
 }
 ```
+---
 ## Rename a todolist item ✍🏽📚
 
 > ⚠ **You must use a bearer token to perform this action**
@@ -323,6 +343,7 @@
     "__v": 2
 }
 ```
+---
 ## Delete a todolist 🗑📚
 
 > ⚠ **You must use a bearer token to perform this action**
@@ -338,8 +359,8 @@
     "result": " deleted"
 }
 ```
-
-## Delete all todolists 🗑📚📚📚📚
+---
+## Delete all current's user todolists 🗑📚📚📚📚
 
 > ⚠ **You must use a bearer token to perform this action**
 
