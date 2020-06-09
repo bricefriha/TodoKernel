@@ -5,6 +5,7 @@ TodoKernel is an API ready to go allowing you to create todolists. Then all you 
 
 ## Index 📖
 - [Todo Kernel](#todo-kernel)
+- [Installation](#installation)
 - [Api methods](#api-methods)
   - [Index 📖](#index-)
   - [Registration 🔑](#registration-)
