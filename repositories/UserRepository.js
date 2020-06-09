@@ -2,13 +2,13 @@
 const config = require('../config/config.js');
 // Use jwt
 const jwt = require('jsonwebtoken');
+
 // Integrate Bcrypt
 const bcrypt = require('bcryptjs');
 
 // Import User model
 const User = require('../models/User');
 const TodoList = require('../models/TodoList');
-const TodoItem = require('../models/TodoItem');
 
 class UserRepository {
 
@@ -19,9 +19,16 @@ class UserRepository {
 
     // To Authentificate a user
     async authenticate({ username, password }) {
+        // Get the user
         const user = await User.findOne({ username }).populate({path:'todolists', populate: { path: 'todolists' }});
+
+        // Verify the input
         if (user && bcrypt.compareSync(password, user.hash)) {
+
+            // Create the token
             const token = jwt.sign({ sub: user.id }, config.Secret);
+
+            // Return all the information needed
             return {
                 user: user.username,
                 firstName: user.firstName,

@@ -65,7 +65,7 @@ TodoKernel is an API ready to go allowing you to create todolists. Then all you 
 **body**: 
 ``` 
 {
-    "username": "user",
+    "username": "BriceFriha",
     "password": "pwd"
 }
 ```
