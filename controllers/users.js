@@ -27,13 +27,6 @@ router.post('/register', (req, res, next) => {
         .catch(err => next(err));
 });
 
-// Get all users
-// router.get('/', (req, res, next) => {
-//     repository.getAll()
-//         .then(users => res.json(users))
-//         .catch(err => next(err));
-// });
-
 // Get the current user
 router.get('/current', (req, res, next) => {
     repository.getById(req.user.sub)
@@ -50,7 +43,7 @@ router.get('/:id', (req, res, next) => {
 router.put('/', (req, res, next) => {
 
     repository.update(req.user.sub, req.body)
-        .then(() => res.json({}))
+        .then(updatedUser => res.json(updatedUser))
         .catch(err => next(err));
 });
 // Delete a user

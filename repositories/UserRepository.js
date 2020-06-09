@@ -83,23 +83,44 @@ class UserRepository {
     
     // Update a user
     async update(id, userParam) {
+        
+        // Get the current user 
         const user = await User.findById(id);
     
         // validate
-        if (!user) throw 'User not found';
-        if (user.username !== userParam.username && await User.findOne({ username: userParam.username })) {
-            throw 'Username "' + userParam.username + '" is already taken';
+        if (user && bcrypt.compareSync(userParam.password, user.hash)) {
+
+            // Here we verify that the username hasn't been already picked
+            if (user.username !== userParam.username && await User.findOne({ username: userParam.username })) {
+                throw 'Username "' + userParam.username + '" is already taken';
+            }
+        
+            // hash the new password if it was filled
+            if (userParam.newPassword) {
+                userParam.hash = bcrypt.hashSync(userParam.newPassword, 10);
+            }
+            else {
+                // Use the previous hashed password
+                userParam.hash = user.hash;
+            }
+        
+            // copy userParam properties to user
+            Object.assign(user, userParam);
+            
+            // Update the user
+            var updatedUser = await user.save();
+
+        } else {
+            throw 'Password incorrect';
         }
-    
-        // hash password if it was entered
-        if (userParam.password) {
-            userParam.hash = bcrypt.hashSync(userParam.password, 10);
-        }
-    
-        // copy userParam properties to user
-        Object.assign(user, userParam);
-    
-        await user.save();
+
+        // Return the new user info
+        return {
+            user: updatedUser.username,
+            firstName: updatedUser.firstName,
+            lastName: updatedUser.lastName,
+        };
+        
     }
     
     // Delete a user
