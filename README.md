@@ -3,8 +3,7 @@ You want to create a todolist app without bothering too much with a backend code
 
 TodoKernel is an API ready to go allowing you to create todolists. Then all you have to do  is to create a sweat little UI that fit your need! 😊 ("have to do", "todo" you get it? 😅)
 
-# Api methods
-## Index 📖
+### Index 📖
 - [Todo Kernel](#todo-kernel)
 - [Api methods](#api-methods)
   - [Index 📖](#index-)
@@ -25,8 +24,32 @@ TodoKernel is an API ready to go allowing you to create todolists. Then all you 
   - [Delete all current's user todolists 🗑📚📚📚📚](#delete-all-currents-user-todolists-)
 
 ---
+## Installation
 
-## Registration 🔑
+> **Make sure that node is installed on your machine/server** 😉
+
+1. The very first step is to install is to fetch the TodoKernel project. To do so, you can:
+
+	Clone the project via git, by running the following command:
+	
+	```  git clone https://github.com/bricefriha/TodoKernel.git ```
+	
+	If you don't have git installed you can still [download](/bricefriha/TodoKernel/archive/master.zip) the project.
+	
+2. Next you'll have to install all the required npm packages. Thus, move to the TodoKernel folder an run this command:
+
+	``` npm install ```
+	
+3. Now all you have to do is starting your app
+	
+	``` npm start ```
+
+4. Finally, the most important part: Enjoy! 😀
+
+
+## Api methods
+
+### Registration 🔑
 
 **Request type**: POST
 
@@ -56,7 +79,7 @@ TodoKernel is an API ready to go allowing you to create todolists. Then all you 
 ```
 ---
 
-## Authentification 🙋🏽‍♂️🙋🏽‍♀️
+### Authentification 🙋🏽‍♂️🙋🏽‍♀️
 
 **Request type**: POST
 
@@ -84,7 +107,7 @@ TodoKernel is an API ready to go allowing you to create todolists. Then all you 
 ```
 ---
 
-## Update user's informations 🙍🏽‍♂️🙍🏽‍♀️✍🏽
+### Update user's informations 🙍🏽‍♂️🙍🏽‍♀️✍🏽
 
 > ⚠ **You must use a bearer token to perform this action**
 
@@ -113,7 +136,7 @@ TodoKernel is an API ready to go allowing you to create todolists. Then all you 
 }
 ```
 ---
-## Get user's informations 🙍🏽‍♂️🙍🏽‍♀️
+### Get user's informations 🙍🏽‍♂️🙍🏽‍♀️
 
 > ⚠ **You must use a bearer token to perform this action**
 
@@ -132,7 +155,7 @@ TodoKernel is an API ready to go allowing you to create todolists. Then all you 
 }
 ```
 
-## Delete current user 🗑🙍🏽‍♂️🙍🏽‍♀️
+### Delete current user 🗑🙍🏽‍♂️🙍🏽‍♀️
 
 > ⚠ **You must use a bearer token to perform this action**
 
@@ -148,7 +171,7 @@ TodoKernel is an API ready to go allowing you to create todolists. Then all you 
 }
 ```
 ---
-## Create a todolist 📝
+### Create a todolist 📝
 
 > ⚠ **You must use a bearer token to perform this action**
 
@@ -174,7 +197,7 @@ TodoKernel is an API ready to go allowing you to create todolists. Then all you 
 }
 ```
 ---
-## Add an item to a todolist ✏
+### Add an item to a todolist ✏
 
 > ⚠ **You must use a bearer token to perform this action**
 
@@ -202,7 +225,7 @@ TodoKernel is an API ready to go allowing you to create todolists. Then all you 
 }
 ```
 ---
-## Delete an item from a todolist 🗑✏
+### Delete an item from a todolist 🗑✏
 
 > ⚠ **You must use a bearer token to perform this action**
 
@@ -218,7 +241,7 @@ TodoKernel is an API ready to go allowing you to create todolists. Then all you 
 }
 ```
 ---
-## Get all your todolists 📚
+### Get all your todolists 📚
 
 > ⚠ **You must use a bearer token to perform this action**
 
@@ -264,7 +287,7 @@ TodoKernel is an API ready to go allowing you to create todolists. Then all you 
 ]
 ```
 ---
-## Check or uncheck a todolist item ✅❎📄
+### Check or uncheck a todolist item ✅❎📄
 
 > ⚠ **You must use a bearer token to perform this action**
 
@@ -279,7 +302,7 @@ TodoKernel is an API ready to go allowing you to create todolists. Then all you 
 }
 ```
 ---
-## Rename a todolist item ✍🏽📄
+### Rename a todolist item ✍🏽📄
 
 > ⚠ **You must use a bearer token to perform this action**
 
@@ -301,7 +324,7 @@ TodoKernel is an API ready to go allowing you to create todolists. Then all you 
 }
 ```
 ---
-## Delete a todolist item 🗑📚
+### Delete a todolist item 🗑📚
 
 > ⚠ **You must use a bearer token to perform this action**
 
@@ -317,7 +340,7 @@ TodoKernel is an API ready to go allowing you to create todolists. Then all you 
 }
 ```
 ---
-## Rename a todolist item ✍🏽📚
+### Rename a todolist item ✍🏽📚
 
 > ⚠ **You must use a bearer token to perform this action**
 
@@ -346,7 +369,7 @@ TodoKernel is an API ready to go allowing you to create todolists. Then all you 
 }
 ```
 ---
-## Delete a todolist 🗑📚
+### Delete a todolist 🗑📚
 
 > ⚠ **You must use a bearer token to perform this action**
 
@@ -362,7 +385,7 @@ TodoKernel is an API ready to go allowing you to create todolists. Then all you 
 }
 ```
 ---
-## Delete all current's user todolists 🗑📚📚📚📚
+### Delete all current's user todolists 🗑📚📚📚📚
 
 > ⚠ **You must use a bearer token to perform this action**
 
