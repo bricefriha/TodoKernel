@@ -309,7 +309,7 @@ with an email
 
 **Request type**: PUT
 
-**route**: ``"/todos/rename/[Todolist id]"``
+**route**: ``"/todos/Check/[item id]"``
 
 **response**: 
 ```
