@@ -108,18 +108,11 @@ class UserRepository {
             Object.assign(user, userParam);
             
             // Update the user
-            var updatedUser = await user.save();
+            await user.save();
 
         } else {
             throw 'Password incorrect';
         }
-
-        // Return the new user info
-        return {
-            user: updatedUser.username,
-            firstName: updatedUser.firstName,
-            lastName: updatedUser.lastName,
-        };
         
     }
     

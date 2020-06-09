@@ -37,7 +37,7 @@ router.get('/:id', (req, res) => {
 router.put('/', (req, res) => {
 
     repository.update(req.user.sub, req.body)
-        .then(updatedUser => res.json(updatedUser))
+        .then(() => res.json({status:"OK", message: "Changes saved"}))
         .catch(error => res.status(500).json({status:"Error 500", message: error}));
 });
 // Delete a user

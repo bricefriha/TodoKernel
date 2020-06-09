@@ -109,7 +109,7 @@ TodoKernel is an API ready to go allowing you to create todolists. Then all you 
 ```
 {
     "status": "OK",
-    "result": "changes Saved"
+    "result": "Changes saved"
 }
 ```
 ---
