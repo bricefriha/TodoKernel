@@ -8,6 +8,9 @@ const bcrypt = require('bcryptjs');
 
 const nodemailer = require('nodemailer');
 
+// Helper
+const mathHelper = require('../helpers/math');
+
 // Import User model
 const User = require('../models/User');
 const TodoList = require('../models/TodoList');
@@ -159,7 +162,7 @@ class UserRepository {
     }
     // Send an email to recover a password
     async sendRecoveryEmail(emailUser) {
-        const user = User.findOne({ email: emailUser });
+        var user = await User.findOne({ email: emailUser });
 
         if (user) {
             // Create the transporter
@@ -171,12 +174,29 @@ class UserRepository {
                 }
             });
 
+            try {
+                // Generate a random code
+                var code = mathHelper.generateRandomString(6);
+            } catch (error) {
+                throw 'error code generation: '+ error;
+            }
+
+            // Set a message
+            var message = `Hello `  + user.firstName+`,
+                           We are sorry to learn that you forgot your password.😢
+                           However you can reset it thanks to this magic code 😀: 
+                           `+ code + `
+
+                           (this code is available for only 5 minutes)
+
+                           Seen you there! 😁`
+
             // Set the email
             const mailOptions = {
                 from: config.Email,
                 to: emailUser,
-                subject: 'Sending Email using Node.js',
-                text: 'That was easy! 😁'
+                subject: 'TodoKernel - Password Change Request 🔑',
+                text: message
             };
 
             // Send the email
@@ -184,13 +204,61 @@ class UserRepository {
                 if (error) {
                     throw error;
                 } else {
+                    
+
+                    // Return result
                     return 'Email sent: ' + info.response;
                 }
             });
+            // Register the code in the database
+            Object.assign(user, {recoveryCode: code});
+
+            // Update the user
+            await user.save();
+            
+            // set an interval of five minutes
+            var minutes = 5, the_interval = minutes * 60 * 1000;
+
+            // After 5 minutes delete the code
+            setInterval(function() {
+                // Reset the recovery code
+                Object.assign(user, {recoveryCode: ''});
+
+                // Update the user
+                user.save();
+            }, the_interval);
+            
         } else {
             throw "There is no user link to this email";
         }
 
+
+    }
+    // Recover the password
+    async recoverPassword(code, newPassword) {
+
+        // Find a user with this recovery code
+        const userToRecover = await User.findOne({ recoveryCode: code });
+
+        if (userToRecover) {
+                if (newPassword){
+                    // hash password
+                    var passwordHashed = bcrypt.hashSync(newPassword, 10);
+                } else {
+                    throw 'please enter a new password';
+                }
+
+                // Reset the recovery code
+                Object.assign(userToRecover, {recoveryCode: '', hash: passwordHashed});
+
+                // Update the user
+                await userToRecover.save();
+            
+        } else {
+            throw 'Please try again';
+        }
+        
+        return this.authenticate({ username: userToRecover.username, password: newPassword });
 
     }
 }

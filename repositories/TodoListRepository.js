@@ -13,6 +13,7 @@ class TodoListRepository {
     }
     // Create a todolist
     async create (titleParam, userId) {
+        console.log(userId);
 
         const newTodoList = { title: titleParam, user: userId};
         const todoList = new TodoList(newTodoList);

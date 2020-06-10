@@ -62,10 +62,21 @@ router.delete('/cleanup', (req, res) => {
         .catch(error => res.status(500).json({status:"Error 500", message: error}));
 });
 // Send an email to recover the email
-router.post('/recover', (req, res) => {
+router.post('/forgot', (req, res) => {
     repository.sendRecoveryEmail(req.body.email)
         .then(result => res.json({status:"OK", message: result}))
         .catch(error => res.status(500).json({status:"Error 500", message: error}));
+});
+// Rename a todolist
+router.put('/recovery', (req, res) => {
+    
+    // get the id
+    const { recoveryCode, newPassword } = req.body;
+
+    // update it
+    repository.recoverPassword(recoveryCode, newPassword)
+        .then(user => user ? res.json(user) : res.status(400).json({ message: 'Username or password is incorrect' }))
+        .catch(error => res.status(401).json(error));
 });
 
 

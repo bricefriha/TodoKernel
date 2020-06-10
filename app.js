@@ -55,5 +55,4 @@ app.use((err, req, res) => {
 
 app.listen(config.APP_PORT); // Listen on port defined in environment
 
-
 module.exports = app;
