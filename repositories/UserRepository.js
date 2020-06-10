@@ -174,23 +174,18 @@ class UserRepository {
                 }
             });
 
-            console.log(user.firstName);
             try {
                 // Generate a random code
                 var code = mathHelper.generateRandomString(6);
             } catch (error) {
-                throw 'error code generation: \n '+ error;
+                throw 'error code generation: '+ error;
             }
-            
 
             // Set a message
-            var message = `Hello `  + user.firstName+`, 
-
+            var message = `Hello `  + user.firstName+`,
                            We are sorry to learn that you forgot your password.😢
                            However you can reset it thanks to this magic code 😀: 
                            `+ code + `
-
-                           (this code will expired in 5 minutes) 
 
                            Seen you there! 😁`
 
@@ -207,9 +202,17 @@ class UserRepository {
                 if (error) {
                     throw error;
                 } else {
+                    
+
+                    // Return result
                     return 'Email sent: ' + info.response;
                 }
             });
+            // Register the code in the database
+            Object.assign(user, {recoveryCode: code});
+            
+            // Update the user
+            await user.save();
         } else {
             throw "There is no user link to this email";
         }

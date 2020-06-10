@@ -26,6 +26,9 @@ const userSchema = new Schema({
         type: String, 
         required: true 
     },
+    recoveryCode: { 
+        type: String,
+    },
     createdDate: { 
         type: Date, 
         default: Date.now 
