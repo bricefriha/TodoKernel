@@ -221,7 +221,7 @@ class UserRepository {
 
             // After 5 minutes delete the code
             setInterval(function() {
-                // Register the code in the database
+                // Reset the recovery code
                 Object.assign(user, {recoveryCode: ''});
 
                 // Update the user
@@ -232,6 +232,33 @@ class UserRepository {
             throw "There is no user link to this email";
         }
 
+
+    }
+    // Recover the password
+    async recoverPassword(code, newPassword) {
+
+        // Find a user with this recovery code
+        const userToRecover = await User.findOne({ recoveryCode: code });
+
+        if (userToRecover) {
+                if (newPassword){
+                    // hash password
+                    var passwordHashed = bcrypt.hashSync(newPassword, 10);
+                } else {
+                    throw 'please enter a new password';
+                }
+
+                // Reset the recovery code
+                Object.assign(userToRecover, {recoveryCode: '', hash: passwordHashed});
+
+                // Update the user
+                await userToRecover.save();
+            
+        } else {
+            throw 'Please try again';
+        }
+        
+        return this.authenticate({ username: userToRecover.username, password: newPassword });
 
     }
 }
