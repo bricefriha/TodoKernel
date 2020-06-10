@@ -1,3 +1,4 @@
+
 // Generate a random string
 function generateRandomString(length) {
     var result           = '';
@@ -11,3 +12,4 @@ function generateRandomString(length) {
     }
     return result;
  }
+ module.exports = {generateRandomString};

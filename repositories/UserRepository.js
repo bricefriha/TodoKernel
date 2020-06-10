@@ -8,6 +8,9 @@ const bcrypt = require('bcryptjs');
 
 const nodemailer = require('nodemailer');
 
+// Helper
+const mathHelper = require('../helpers/math');
+
 // Import User model
 const User = require('../models/User');
 const TodoList = require('../models/TodoList');
@@ -159,7 +162,7 @@ class UserRepository {
     }
     // Send an email to recover a password
     async sendRecoveryEmail(emailUser) {
-        const user = User.findOne({ email: emailUser });
+        var user = await User.findOne({ email: emailUser });
 
         if (user) {
             // Create the transporter
@@ -171,12 +174,32 @@ class UserRepository {
                 }
             });
 
+            console.log(user.firstName);
+            try {
+                // Generate a random code
+                var code = mathHelper.generateRandomString(6);
+            } catch (error) {
+                throw 'error code generation: \n '+ error;
+            }
+            
+
+            // Set a message
+            var message = `Hello `  + user.firstName+`, 
+
+                           We are sorry to learn that you forgot your password.😢
+                           However you can reset it thanks to this magic code 😀: 
+                           `+ code + `
+
+                           (this code will expired in 5 minutes) 
+
+                           Seen you there! 😁`
+
             // Set the email
             const mailOptions = {
                 from: config.Email,
                 to: emailUser,
-                subject: 'Sending Email using Node.js',
-                text: 'That was easy! 😁'
+                subject: 'TodoKernel - Password Change Request 🔑',
+                text: message
             };
 
             // Send the email
