@@ -187,6 +187,8 @@ class UserRepository {
                            However you can reset it thanks to this magic code 😀: 
                            `+ code + `
 
+                           (this code is available for only 5 minutes)
+
                            Seen you there! 😁`
 
             // Set the email
@@ -213,11 +215,17 @@ class UserRepository {
 
             // Update the user
             await user.save();
+            
+            // set an interval of five minutes
+            var minutes = 5, the_interval = minutes * 60 * 1000;
 
-            var minutes = 1, the_interval = minutes * 60 * 1000;
+            // After 5 minutes delete the code
             setInterval(function() {
-            console.log("I am doing my 5 minutes check");
-            // do your stuff here
+                // Register the code in the database
+                Object.assign(user, {recoveryCode: ''});
+
+                // Update the user
+                user.save();
             }, the_interval);
             
         } else {
