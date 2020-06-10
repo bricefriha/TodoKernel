@@ -13,6 +13,9 @@ TodoKernel is an API ready to go allowing you to create todolists. Then all you 
     - [Authentification 🙋🏽‍♂️🙋🏽‍♀️](#authentification-️️)
     - [Update user's informations 🙍🏽‍♂️🙍🏽‍♀️✍🏽](#update-users-informations-️️)
     - [Get user's informations 🙍🏽‍♂️🙍🏽‍♀️](#get-users-informations-️️)
+    - [Send email to recover a password 📩🔑](#send-email-to-recover-a-password-)
+  - [Change a forgot password 👉🏽🔑](#change-a-forgot-password-)
+  - [> it's worth noting that the user is automatically connected after this action](#blockquoteits-worth-noting-that-the-user-is-automatically-connected-after-this-actionblockquote)
     - [Delete current user 🗑🙍🏽‍♂️🙍🏽‍♀️](#delete-current-user-️️)
     - [Create a todolist 📝](#create-a-todolist-)
     - [Add an item to a todolist ✏](#add-an-item-to-a-todolist-)
@@ -160,7 +163,7 @@ with an email
 
 **route**: ``  "/users/current" ``
 
-**body**:
+**Response**:
 ```
 {
 	"username": "JustinC",
@@ -170,6 +173,62 @@ with an email
 	
 }
 ```
+---
+### Send email to recover a password 📩🔑
+
+**Request type**: POST
+
+**route**: ``  "/users/forgot" ``
+
+**Body**:
+```
+{
+	"email": "brice.friha@outlook.com"
+	
+}
+```
+**Response**:
+```
+{
+    "status": "OK"
+}
+```
+---
+## Change a forgot password 👉🏽🔑
+
+**Request type**: PUT
+
+**route**: ``  "/users/recovery" ``
+
+**Body**:
+```
+{
+	"recoveryCode": "[recovery code sent via email]",
+    "newPassword": "pwd"
+}
+```
+**Response**:
+```
+{{
+    "username": "BriceFriha",
+    "email": "brice.friha@outlook.com",
+    "firstName": "Brice",
+    "lastName": "Friha",
+    "todolists": [
+        {
+            "items": [
+                "5ee0eb0dc551c20d74674086"
+            ],
+            "_id": "5ee0eaf2c551c20d74674085",
+            "title": "Shopping list",
+            "user": "5ee0e25556294c2c70ee128b",
+            "__v": 1
+        }
+    ],
+    "token": "<your token>"
+}
+```
+> it's worth noting that the user is automatically connected after this action
 ---
 ### Delete current user 🗑🙍🏽‍♂️🙍🏽‍♀️
 
