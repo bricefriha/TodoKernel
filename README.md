@@ -203,7 +203,7 @@ with an email
 **Body**:
 ```
 {
-	"recoveryCode": "[recovery code sent via email]",
+    "recoveryCode": "[recovery code sent via email]",
     "newPassword": "pwd"
 }
 ```
