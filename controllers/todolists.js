@@ -27,9 +27,11 @@ app.post('/create', (req, res) => {
     // Get, from the body, the title as well as the userId
     const { title } = req.body;
 
-
+    // get user's id
+    const userId = req.user.sub;
+    
     // Add the item to the selected todolist passing the userid and the title
-    TodoListRepo.create(title, req.user.sub).then((todolist) => {
+    TodoListRepo.create(title, userId).then((todolist) => {
         // asign this new todolist to the user 
         UserRepo.addTodolist(todolist._id, userId);
 
