@@ -113,7 +113,7 @@ with an email
 **response**: 
 ```
 {
-    "user": "BriceFriha",
+    "username": "BriceFriha",
     "firstName": "BriceFriha",
     "lastName": "BriceFriha",
     "todolists": [
