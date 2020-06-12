@@ -52,7 +52,7 @@ class TodoListRepository {
     }
     // Rename a todolist
     async rename (id, userId, newTitle) {
-        // Query to get the selected todolist
+        // Get the selected todolist
         const selectedTodolist = await TodoList.findOne({_id: id, user: userId});
 
         // copy userParam properties to user

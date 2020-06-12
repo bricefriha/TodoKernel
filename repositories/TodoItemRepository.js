@@ -50,10 +50,12 @@ class TodoItemRepository {
     // Update todo
     async rename (id, userId, object) {
         // Query to get the selected item
-        const query = {_id: id, user: userId};
+        const selectedItem = await TodoItem.findOne({_id: id, user: userId});
+        // copy userParam properties to user
+        Object.assign(selectedItem, {name: object.name});
 
-        // update the Item with the new name
-        return this.model.findOneAndUpdate(query, { $set: {name: object.name}});
+        // update the todolist with the new name
+        return await selectedItem.save();
     }
     async check (id, userId) {
         const query = {_id: id, user: userId};
@@ -62,7 +64,7 @@ class TodoItemRepository {
         const item = await TodoItem.findOne(query);
 
         // Check or uncheck the item
-        return this.model.findOneAndUpdate(query, { $set: { done: !item.done}});
+        return TodoItem.findOneAndUpdate(query, { $set: { done: !item.done}});
     }
     
     
