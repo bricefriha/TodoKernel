@@ -77,7 +77,7 @@ app.put('/rename/:id', (req, res) => {
     // update it
     TodoListRepo.rename(id, req.user.sub, req.body.title)
         .then(result => result ? res.status(200).json(result) : res.status(400).json({ message: 'todolist not found' }))
-        .catch((error) => res.status(500).json(error));
+        .catch(error => res.status(500).json(error));
 });
 
 module.exports = app;
