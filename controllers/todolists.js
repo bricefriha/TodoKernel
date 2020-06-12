@@ -17,9 +17,9 @@ app.get('/', (req, res) => {
     UserRepo.getTodolists(req.user.sub).then((todolists) => {
        
         // Return this one in Json format
-        res.json(todolists);
+        res.status(200).json(todolists);
 
-    }).catch((error) => console.log(error));
+    }).catch((error) => res.status(500).json(error));
 });
 // Add a todo todolist
 app.post('/create', (req, res) => {
@@ -36,9 +36,9 @@ app.post('/create', (req, res) => {
         UserRepo.addTodolist(todolist._id, userId);
 
         // Return this one in Json format
-        res.json(todolist);
+        res.status(200).json(todolist);
 
-    }).catch((error) => console.log(error));
+    }).catch((error) => res.status(500).json(error));
 });
 
 // Add a todo todolist
@@ -56,17 +56,17 @@ app.delete('/:id', (req, res) => {
             ItemRepo.deleteByTodolist(todolistId);
             
             
-            res.json({status: "OK", result:  "deleted"});
+            res.status(200).json({status: "OK", result:  "Deleted"});
 
             
         } else {
             // Return this one in Json format
-            res.json({status: "Error", result: "you cannot delete this todolist", detail: todolist});
+            res.status(500).json({status: "Error", result: "you cannot delete this todolist", detail: todolist});
         }
 
         
 
-    }).catch((error) => console.log(error));
+    }).catch((error) => res.status(500).json(error));
 });
 // Rename a todolist
 app.put('/rename/:id', (req, res) => {
@@ -76,8 +76,8 @@ app.put('/rename/:id', (req, res) => {
 
     // update it
     TodoListRepo.rename(id, req.user.sub, req.body.title)
-        .then((result) => {res.status(200).json(result)})
-        .catch((error) => console.log(error));
+        .then(result => result ? res.status(200).json(result) : res.status(400).json({ message: 'todolist not found' }))
+        .catch((error) => res.status(500).json(error));
 });
 
 module.exports = app;
