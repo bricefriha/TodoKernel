@@ -5,13 +5,16 @@
     "main": "server.js",
     "author": "Brice Friha",
     "scripts": {
-        "build": "webpack",
-        "start": "node src/app.js"
+        "build": "webpack --mode=development",
+        "start": "node src/app.js",
+        "prod": "NODE_ENV=production node src/app.js",
+        "dev": "NODE_ENV=development node src/app.js"
     },
     "dependencies": {
         "bcryptjs": "^2.4.3",
         "cookie-parser": "^1.4.5",
         "cors": "^2.8.5",
+        "cross-env": "^7.0.2",
         "debug": "^2.6.9",
         "express": "^4.16.4",
         "express-jwt": "^5.3.3",
