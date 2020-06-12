@@ -82,7 +82,6 @@ TodoKernel is an API ready to go allowing you to create todolists. Then all you 
     "firstName": "BriceFriha",
     "lastName": "BriceFriha",
     "todolists": [
-        // user's todolists
     ],
     "token": "<your token>"
 }
@@ -110,7 +109,7 @@ TodoKernel is an API ready to go allowing you to create todolists. Then all you 
     "firstName": "BriceFriha",
     "lastName": "BriceFriha",
     "todolists": [
-        // user's todolists
+       
     ],
     "token": "<your token>"
 }
@@ -264,15 +263,7 @@ TodoKernel is an API ready to go allowing you to create todolists. Then all you 
 [
     {
         "items": [
-            {
-                "_id": "5ed3861f5151de45f4b637e3",
-                "name": "Fries",
-                "done": false,
-                "todolist": "5ed385135151de45f4b637df",
-                "user": "5ecd5cb5048a7231d8ddbb15",
-                "__v": 0
-            }
-        ],
+ 	],
         "_id": "5ed385135151de45f4b637df",
         "title": "Shopping list",
         "user": "5ecd5cb5048a7231d8ddbb15",
@@ -280,14 +271,6 @@ TodoKernel is an API ready to go allowing you to create todolists. Then all you 
     },
     {
         "items": [
-            {
-                "_id": "5ed7f43f35670f2f348c8cbd",
-                "name": "Eggs",
-                "done": false,
-                "todolist": "5ed7f3d335670f2f348c8cbc",
-                "user": "5ecd5cb5048a7231d8ddbb15",
-                "__v": 0
-            }
         ],
         "_id": "5ed7f3d335670f2f348c8cbc",
         "title": "Shopping list",
