@@ -47,24 +47,38 @@ class TodoItemRepository {
         // Delete all items from a specific user
         return TodoItem.deleteMany({"user":  userId});
     }
-    // Update todo
+    // Update item
     async rename (id, userId, object) {
         // Query to get the selected item
         const selectedItem = await TodoItem.findOne({_id: id, user: userId});
-        // copy userParam properties to user
-        Object.assign(selectedItem, {name: object.name});
+        
+        // Verify is the item is found
+        if (selectedItem) {
+            // copy parameters properties to the item
+            Object.assign(selectedItem, {name: object.name});
+        } else {
+            throw 'item not found';
+        }
 
         // update the todolist with the new name
         return await selectedItem.save();
     }
+    // Update item update an item
     async check (id, userId) {
-        const query = {_id: id, user: userId};
+        // Query to get the selected item
+        const selectedItem = await TodoItem.findOne({_id: id, user: userId});
+        
+         if (selectedItem) {
+            const newVal = !selectedItem.done;
 
-        // Get the actual state of the item
-        const item = await TodoItem.findOne(query);
-
-        // Check or uncheck the item
-        return TodoItem.findOneAndUpdate(query, { $set: { done: !item.done}});
+            // Check or uncheck the item
+            Object.assign(selectedItem, {done: newVal});
+         } else {
+             throw 'item not found';
+         }
+ 
+         // update the todolist with the new name
+         return await selectedItem.save();
     }
     
     

@@ -23,9 +23,9 @@ app.post('/:add', (req, res) => {
         TodoListRepo.addItem(item._id, todolistId);
          
         // Return this one in Json format
-        res.json(item);
+        res.status(200).json(item);
 
-    }).catch((error) => console.log(error));
+    }).catch(error => res.status(500).json(error));
 });
 
 // Add a todo item
@@ -37,9 +37,9 @@ app.get('/get', (req, res) => {
     ItemRepo.findByTodolist(todolistId, req.user.sub).then((item) => {
          
         // Return this one in Json format
-        res.json(item);
+        res.status(200).json(item);
 
-    }).catch((error) => console.log(error));
+    }).catch(error => res.status(500).json(error));
 });
 
 // delete a todo item
@@ -51,7 +51,7 @@ app.delete('/:id', (req, res) => {
     ItemRepo.delete(id, req.user.sub).then((ok) => {
       // Return a success
       res.status(200).json({result: ok, message: `Deleted record with id: ${id}`});
-    }).catch((error) => res.status(500).json(error));
+    }).catch(error => res.status(500).json(error));
   });
 
 // Update a todo item
@@ -65,8 +65,8 @@ app.put('/rename/:id', (req, res) => {
 
     // update it
     ItemRepo.rename(id, req.user.sub, todo)
-        .then(res.status(200).json(todo))
-        .catch((error) => console.log(error));
+        .then(result => result ? res.status(200).json(result) : res.status(400).json({ message: 'item not found' }))
+        .catch(error => res.status(500).json({status:"Error", message: error}));
 });
 
 // check todo item
@@ -77,8 +77,8 @@ app.put('/check/:id', (req, res) => {
 
     // update it
     ItemRepo.check(id, req.user.sub)
-        .then(res.status(200).json({status: "OK"}))
-        .catch((error) => console.log(error));
+        .then(result => result ? res.status(200).json(result) : res.status(400).json({ message: 'item not found' }))
+        .catch(error => res.status(500).json({ status:"Error", message: error }));
 });
 
 module.exports = app;
