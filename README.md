@@ -34,19 +34,25 @@ TodoKernel is an API ready to go allowing you to create todolists. Then all you 
 
 	Clone the project via git, by running the following command:
 	
-	```  git clone https://github.com/bricefriha/TodoKernel.git ```
+	```Bash
+	git clone https://github.com/bricefriha/TodoKernel.git 
+	```
 	
 	If you don't have git installed you can still [download](https://github.com/bricefriha/TodoKernel/archive/master.zip) the project.
 	
 2. Next you'll have to install all the required npm packages. Thus, move to the TodoKernel folder an run this command:
 
-	``` npm install ```
+	```Bash
+	npm install 
+	```
 	
 3. Then, to make sure to get access to the project config, rename ``config-dist`` to ``config``
 	
 4. Now all you have to do is starting your app
 	
-	``` npm start ```
+	```Bash
+	npm start 
+	```
 
 5. Finally, the most important part: Enjoy! 😀
 
@@ -60,7 +66,7 @@ TodoKernel is an API ready to go allowing you to create todolists. Then all you 
 **route**: ``  "/users/register" ``
 
 **body**:
-```
+```JSON
 {
     "firstName": "BriceFriha",
     "lastName": "BriceFriha",
@@ -70,7 +76,7 @@ TodoKernel is an API ready to go allowing you to create todolists. Then all you 
 ```
 
 **response**: 
-```
+```JSON
 {
     "user": "BriceFriha",
     "firstName": "BriceFriha",
@@ -90,7 +96,7 @@ TodoKernel is an API ready to go allowing you to create todolists. Then all you 
 **route**: ``"/users/authenticate"``
 
 **body**: 
-``` 
+```JSON
 {
     "username": "BriceFriha",
     "password": "pwd"
@@ -98,7 +104,7 @@ TodoKernel is an API ready to go allowing you to create todolists. Then all you 
 ```
 
 **response**: 
-```
+```JSON
 {
     "user": "BriceFriha",
     "firstName": "BriceFriha",
@@ -120,7 +126,7 @@ TodoKernel is an API ready to go allowing you to create todolists. Then all you 
 **route**: ``  "/users/register" ``
 
 **body**:
-```
+```JSON
 {
 	"username": "JustinC",
 	"firstName": "Justin",
@@ -133,7 +139,7 @@ TodoKernel is an API ready to go allowing you to create todolists. Then all you 
 > ℹ  If you don't want to modify the password, just don't fill the "newPassword" field
 
 **response**: 
-```
+```JSON
 {
     "status": "OK",
     "result": "Changes saved"
@@ -149,7 +155,7 @@ TodoKernel is an API ready to go allowing you to create todolists. Then all you 
 **route**: ``  "/users/current" ``
 
 **body**:
-```
+```JSON
 {
 	"username": "JustinC",
 	"firstName": "Justin",
@@ -168,7 +174,7 @@ TodoKernel is an API ready to go allowing you to create todolists. Then all you 
 **route**: ``"/users/current"``
 
 **response**: 
-```
+```JSON
 {
     "status": "OK",
     "result": " deleted"
@@ -184,14 +190,14 @@ TodoKernel is an API ready to go allowing you to create todolists. Then all you 
 **route**: ``"/todolists/create"``
 
 **body**: 
-``` 
+```JSON 
 {
 	"title":"Shopping list"
 }
 ```
 
 **response**: 
-```
+```JSON
 {
     "items": [],
     "_id": "5ed7f3d335670f2f348c8cbc",
@@ -210,7 +216,7 @@ TodoKernel is an API ready to go allowing you to create todolists. Then all you 
 **route**: ``"/todolists/create"``
 
 **body**: 
-``` 
+```JSON 
 {
 	"name":"Eggs",
 	"todolistId": "5ed7f3d335670f2f348c8cbc"
@@ -218,7 +224,7 @@ TodoKernel is an API ready to go allowing you to create todolists. Then all you 
 ```
 
 **response**: 
-```
+```JSON
 {
     "_id": "5ed7f43f35670f2f348c8cbd",
     "name": "Eggs",
@@ -238,7 +244,7 @@ TodoKernel is an API ready to go allowing you to create todolists. Then all you 
 **route**: ``"/todos/[item id]"``
 
 **response**: 
-```
+```JSON
 {
     "status": "OK",
     "result": " deleted"
@@ -254,7 +260,7 @@ TodoKernel is an API ready to go allowing you to create todolists. Then all you 
 **route**: ``"/todolists/"``
 
 **response**: 
-```
+```JSON
 [
     {
         "items": [
@@ -300,7 +306,7 @@ TodoKernel is an API ready to go allowing you to create todolists. Then all you 
 **route**: ``"/todos/rename/[Todolist id]"``
 
 **response**: 
-```
+```JSON
 {
     "status": "OK"
 }
@@ -315,14 +321,14 @@ TodoKernel is an API ready to go allowing you to create todolists. Then all you 
 **Route**: ``"/todos/rename/[Todolist id]"``
 
 **Body**: 
-```
+```JSON
 {
 	"name": "Fries"
 }
 ```
 
 **Response**: 
-```
+```JSON
 {
 	"name": "Fries"	
 }
@@ -337,7 +343,7 @@ TodoKernel is an API ready to go allowing you to create todolists. Then all you 
 **route**: ``"/todos/[Todolist id]"``
 
 **response**: 
-```
+```JSON
 {
     "status": "OK",
     "result": " deleted"
@@ -353,7 +359,7 @@ TodoKernel is an API ready to go allowing you to create todolists. Then all you 
 **Route**: ``"/todolists/rename/[Todolist id]"``
 
 **Body**: 
-```
+```JSON
 {
 	"title": "Workout"
 	
@@ -361,7 +367,7 @@ TodoKernel is an API ready to go allowing you to create todolists. Then all you 
 ```
 
 **Response**: 
-```
+```JSON
 {
     "items": [
         
@@ -382,7 +388,7 @@ TodoKernel is an API ready to go allowing you to create todolists. Then all you 
 **route**: ``"/todolists/[Todolist id]"``
 
 **response**: 
-```
+```JSON
 {
     "status": "OK",
     "result": " deleted"
@@ -398,7 +404,7 @@ TodoKernel is an API ready to go allowing you to create todolists. Then all you 
 **route**: ``"/users/cleanup"``
 
 **response**: 
-```
+```JSON
 {
     "status": "OK",
     "result": " deleted"
