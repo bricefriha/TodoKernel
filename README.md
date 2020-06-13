@@ -14,7 +14,8 @@ TodoKernel is an API ready to go allowing you to create todolists. Then all you 
     - [Update user's informations 🙍🏽‍♂️🙍🏽‍♀️✍🏽](#update-users-informations-️️)
     - [Get user's informations 🙍🏽‍♂️🙍🏽‍♀️](#get-users-informations-️️)
     - [Send email to recover a password 📩🔑](#send-email-to-recover-a-password-)
-    - [Change a forgotten password 👉🏽🔑](#change-a-forgot-password-)
+  - [Change a forgot password 👉🏽🔑](#change-a-forgot-password-)
+  - [> it's worth noting that the user is automatically connected after this action](#blockquoteits-worth-noting-that-the-user-is-automatically-connected-after-this-actionblockquote)
     - [Delete current user 🗑🙍🏽‍♂️🙍🏽‍♀️](#delete-current-user-️️)
     - [Create a todolist 📝](#create-a-todolist-)
     - [Add an item to a todolist ✏](#add-an-item-to-a-todolist-)
@@ -36,19 +37,25 @@ TodoKernel is an API ready to go allowing you to create todolists. Then all you 
 
 	Clone the project via git, by running the following command:
 	
-	```  git clone https://github.com/bricefriha/TodoKernel.git ```
+	```Bash
+	git clone https://github.com/bricefriha/TodoKernel.git 
+	```
 	
 	If you don't have git installed you can still [download](https://github.com/bricefriha/TodoKernel/archive/master.zip) the project.
 	
 2. Next you'll have to install all the required npm packages. Thus, move to the TodoKernel folder an run this command:
 
-	``` npm install ```
+	```Bash
+	npm install 
+	```
 	
 3. Then, to make sure to get access to the project config, rename ``config-dist`` to ``config``
 	
 4. Now all you have to do is starting your app
 	
-	``` npm start ```
+	```Bash
+	npm start 
+	```
 
 5. Finally, the most important part: Enjoy! 😀
 
@@ -62,7 +69,7 @@ TodoKernel is an API ready to go allowing you to create todolists. Then all you 
 **route**: ``  "/users/register" ``
 
 **body**:
-```
+```JSON
 {
     "firstName": "BriceFriha",
     "lastName": "BriceFriha",
@@ -73,14 +80,13 @@ TodoKernel is an API ready to go allowing you to create todolists. Then all you 
 ```
 
 **response**: 
-```
+```JSON
 {
     "username": "BriceFriha",
     "firstName": "BriceFriha",
     "lastName": "BriceFriha",
     "email": "brice.friha@email.com",
     "todolists": [
-        // user's todolists
     ],
     "token": "<your token>"
 }
@@ -94,9 +100,7 @@ TodoKernel is an API ready to go allowing you to create todolists. Then all you 
 **route**: ``"/users/authenticate"``
 
 **body**: 
-
-with an username
-``` 
+```JSON
 {
     "username": "BriceFriha",
     "password": "pwd"
@@ -111,13 +115,13 @@ with an email
 ```
 
 **response**: 
-```
+```JSON
 {
     "username": "BriceFriha",
     "firstName": "BriceFriha",
     "lastName": "BriceFriha",
     "todolists": [
-        // user's todolists
+       
     ],
     "token": "<your token>"
 }
@@ -133,7 +137,7 @@ with an email
 **route**: ``  "/users/register" ``
 
 **body**:
-```
+```JSON
 {
 	"username": "JustinC",
 	"firstName": "Justin",
@@ -147,7 +151,7 @@ with an email
 > ℹ  If you don't want to modify the password, just don't fill the "newPassword" field
 
 **response**: 
-```
+```JSON
 {
     "status": "OK",
     "result": "Changes saved"
@@ -162,8 +166,8 @@ with an email
 
 **route**: ``  "/users/current" ``
 
-**Response**:
-```
+**body**:
+```JSON
 {
 	"username": "JustinC",
 	"firstName": "Justin",
@@ -238,7 +242,7 @@ with an email
 **route**: ``"/users/current"``
 
 **response**: 
-```
+```JSON
 {
     "status": "OK",
     "result": " deleted"
@@ -254,14 +258,14 @@ with an email
 **route**: ``"/todolists/create"``
 
 **body**: 
-``` 
+```JSON 
 {
 	"title":"Shopping list"
 }
 ```
 
 **response**: 
-```
+```JSON
 {
     "items": [],
     "_id": "5ed7f3d335670f2f348c8cbc",
@@ -280,7 +284,7 @@ with an email
 **route**: ``"/todolists/create"``
 
 **body**: 
-``` 
+```JSON 
 {
 	"name":"Eggs",
 	"todolistId": "5ed7f3d335670f2f348c8cbc"
@@ -288,7 +292,7 @@ with an email
 ```
 
 **response**: 
-```
+```JSON
 {
     "_id": "5ed7f43f35670f2f348c8cbd",
     "name": "Eggs",
@@ -308,7 +312,7 @@ with an email
 **route**: ``"/todos/[item id]"``
 
 **response**: 
-```
+```JSON
 {
     "status": "OK",
     "result": " deleted"
@@ -324,19 +328,11 @@ with an email
 **route**: ``"/todolists/"``
 
 **response**: 
-```
+```JSON
 [
     {
         "items": [
-            {
-                "_id": "5ed3861f5151de45f4b637e3",
-                "name": "Fries",
-                "done": false,
-                "todolist": "5ed385135151de45f4b637df",
-                "user": "5ecd5cb5048a7231d8ddbb15",
-                "__v": 0
-            }
-        ],
+ 	],
         "_id": "5ed385135151de45f4b637df",
         "title": "Shopping list",
         "user": "5ecd5cb5048a7231d8ddbb15",
@@ -344,14 +340,6 @@ with an email
     },
     {
         "items": [
-            {
-                "_id": "5ed7f43f35670f2f348c8cbd",
-                "name": "Eggs",
-                "done": false,
-                "todolist": "5ed7f3d335670f2f348c8cbc",
-                "user": "5ecd5cb5048a7231d8ddbb15",
-                "__v": 0
-            }
         ],
         "_id": "5ed7f3d335670f2f348c8cbc",
         "title": "Shopping list",
@@ -370,7 +358,7 @@ with an email
 **route**: ``"/todos/Check/[item id]"``
 
 **response**: 
-```
+```JSON
 {
     "status": "OK"
 }
@@ -385,14 +373,14 @@ with an email
 **Route**: ``"/todos/rename/[Todolist id]"``
 
 **Body**: 
-```
+```JSON
 {
 	"name": "Fries"
 }
 ```
 
 **Response**: 
-```
+```JSON
 {
 	"name": "Fries"	
 }
@@ -407,7 +395,7 @@ with an email
 **route**: ``"/todos/[Todolist id]"``
 
 **response**: 
-```
+```JSON
 {
     "status": "OK",
     "result": " deleted"
@@ -423,7 +411,7 @@ with an email
 **Route**: ``"/todolists/rename/[Todolist id]"``
 
 **Body**: 
-```
+```JSON
 {
 	"title": "Workout"
 	
@@ -431,7 +419,7 @@ with an email
 ```
 
 **Response**: 
-```
+```JSON
 {
     "items": [
         
@@ -452,7 +440,7 @@ with an email
 **route**: ``"/todolists/[Todolist id]"``
 
 **response**: 
-```
+```JSON
 {
     "status": "OK",
     "result": " deleted"
@@ -468,7 +456,7 @@ with an email
 **route**: ``"/users/cleanup"``
 
 **response**: 
-```
+```JSON
 {
     "status": "OK",
     "result": " deleted"
