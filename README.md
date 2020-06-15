@@ -14,8 +14,7 @@ TodoKernel is an API ready to go allowing you to create todolists. Then all you 
     - [Update user's informations 🙍🏽‍♂️🙍🏽‍♀️✍🏽](#update-users-informations-️️)
     - [Get user's informations 🙍🏽‍♂️🙍🏽‍♀️](#get-users-informations-️️)
     - [Send email to recover a password 📩🔑](#send-email-to-recover-a-password-)
-  - [Change a forgot password 👉🏽🔑](#change-a-forgot-password-)
-  - [> it's worth noting that the user is automatically connected after this action](#blockquoteits-worth-noting-that-the-user-is-automatically-connected-after-this-actionblockquote)
+    - [Change a forgotten password 👉🏽🔑](#change-a-forgot-password-)
     - [Delete current user 🗑🙍🏽‍♂️🙍🏽‍♀️](#delete-current-user-️️)
     - [Create a todolist 📝](#create-a-todolist-)
     - [Add an item to a todolist ✏](#add-an-item-to-a-todolist-)
@@ -197,7 +196,7 @@ with an email
 }
 ```
 ---
-## Change a forgot password 👉🏽🔑
+## Change a forgotten password 👉🏽🔑
 
 **Request type**: PUT
 
