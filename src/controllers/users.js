@@ -10,35 +10,35 @@ const TodolistRepo = require('../repositories/TodoListRepository');
 // Authentificate the user
 router.post('/authenticate',(req, res) => {
     repository.authenticate(req.body)
-        .then(user => user ? res.status(200).json(user) : res.status(403).json({ message: 'Username or password is incorrect' }))
-        .catch(error => res.status(500).json({status:"Error 500", message: error}));
+        .then(data => data ? res.status(200).json(data) : res.status(403).json({ message: 'Username or password is incorrect' }))
+        .catch(err => res.status(500).json({status:"Error 500", message: err}));
 });
 
 // Register the user
 router.post('/register', (req, res) => {
     repository.create(req.body)
-        .then(user => res.status(200).json(user))
-        .catch(error => res.status(500).json({status:"Error 500", message: error}));
+        .then(data => res.status(200).json(data))
+        .catch(err => res.status(500).json({status:"Error 500", message: err}));
 });
 
 // Get the current user
 router.get('/current', (req, res) => {
     repository.getById(req.user.sub)
-        .then(user => user ? res.status(200).json(user) : res.status(403).json({status:"Error 403"}))
-        .catch(error => res.status(500).json({status:"Error 500", message: error}));
+        .then(data => data ? res.status(200).json(data) : res.status(403).json({status:"Error 403"}))
+        .catch(err => res.status(500).json({status:"Error 500", message: err}));
 });
 // Get a single user
 router.get('/:id', (req, res) => {
     repository.getById(req.params.id)
-        .then(user => user ? res.status(200).json(user) :  res.status(403).json({status:"Error 403"}))
-        .catch(error => res.status(500).json({status:"Error 500", message: error}));
+        .then(data => data ? res.status(200).json(data) :  res.status(403).json({status:"Error 403"}))
+        .catch(err => res.status(500).json({status:"Error 500", message: err}));
 });
 // Update a user
 router.put('/', (req, res) => {
 
     repository.update(req.user.sub, req.body)
         .then(() => res.status(200).json({status:"OK", message: "Changes saved"}))
-        .catch(error => res.status(500).json({status:"Error 500", message: error}));
+        .catch(err => res.status(500).json({status:"Error 500", message: err}));
 });
 // Delete a user
 router.delete('/current', (req, res) => {
@@ -47,9 +47,9 @@ router.delete('/current', (req, res) => {
         .then(function() {
             // Delete all todolists of the user
             TodolistRepo.deleteByUser(userId);
-            res.status(200).json({status: "OK", result:  " deleted"});
+            res.status(200).json({status: "OK", result:  "Deleted"});
         })
-        .catch(error => res.status(500).json({status:"Error 500", message: error}));
+        .catch(err => res.status(500).json({status:"Error 500", message: err}));
 });
 // Delete a user
 router.delete('/cleanup', (req, res) => {
@@ -59,13 +59,13 @@ router.delete('/cleanup', (req, res) => {
         .then(function() {;
             res.status(200).json({status: "OK", result:  " deleted"});
         })
-        .catch(error => res.status(500).json({status:"Error 500", message: error}));
+        .catch(err => res.status(500).json({status:"Error 500", message: err}));
 });
 // Send an email to recover the email
 router.post('/forgot', (req, res) => {
     repository.sendRecoveryEmail(req.body.email)
-        .then(result => res.status(200).json({status:"OK", message: result}))
-        .catch(error => res.status(500).json({status:"Error 500", message: error}));
+        .then(data => res.status(200).json({status:"OK", message: data}))
+        .catch(err => res.status(500).json({status:"Error 500", message: err}));
 });
 // Rename a todolist
 router.put('/recovery', (req, res) => {
@@ -75,8 +75,8 @@ router.put('/recovery', (req, res) => {
 
     // update it
     repository.recoverPassword(recoveryCode, newPassword)
-        .then(user => user ? res.status(200).json(user) : res.status(400).json({ message: 'Username or password is incorrect' }))
-        .catch(error => res.status(401).json(error));
+        .then(data => data ? res.status(200).json(data) : res.status(400).json({ message: 'Username or password is incorrect' }))
+        .catch(err => res.status(401).json(err));
 });
 
 
