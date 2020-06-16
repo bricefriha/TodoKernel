@@ -65,7 +65,7 @@ app.put('/rename/:id', (req, res) => {
 
     // update it
     ItemRepo.rename(id, req.user.sub, todo)
-        .then(result => result ? res.status(200).json(result) : res.status(400).json({ message: 'item not found' }))
+        .then(result => result ? res.status(200).json(result) : res.status(403).json({ message: 'item not found' }))
         .catch(error => res.status(500).json({status:"Error", message: error}));
 });
 
@@ -77,7 +77,7 @@ app.put('/check/:id', (req, res) => {
 
     // update it
     ItemRepo.check(id, req.user.sub)
-        .then(result => result ? res.status(200).json(result) : res.status(400).json({ message: 'item not found' }))
+        .then(result => result ? res.status(200).json(result) : res.status(403).json({ message: 'item not found' }))
         .catch(error => res.status(500).json({ status:"Error", message: error }));
 });
 
