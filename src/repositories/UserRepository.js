@@ -58,23 +58,21 @@ class UserRepository {
 
     // Get a single user
     async getById(id) {
-        var currentUser;
-        try {
-            // Get the current user
-            currentUser = await User.findById(id);
-        }
-        catch
-        {
-            throw 'user not found'
-        }
+        // Get the current user
+        var currentUser = await User.findById(id);
 
-        return {
-            user: currentUser.username,
-            email: currentUser.email,
-            firstName: currentUser.firstName,
-            lastName: currentUser.lastName,
-            creationDate: currentUser.createdDate,
-        };
+        // Verify if the user exist
+        if (currentUser) {
+            return {
+                user: currentUser.username,
+                email: currentUser.email,
+                firstName: currentUser.firstName,
+                lastName: currentUser.lastName,
+                creationDate: currentUser.createdDate,
+            };
+        } 
+
+        
     }
 
     // Create a user
