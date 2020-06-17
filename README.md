@@ -23,7 +23,7 @@ TodoKernel is an API ready to go allowing you to create todolists. Then all you 
     - [Check or uncheck a todolist item ✅❎📄](#check-or-uncheck-a-todolist-item-)
     - [Rename a todolist item ✍🏽📄](#rename-a-todolist-item-)
     - [Delete a todolist item 🗑📚](#delete-a-todolist-item-)
-    - [Rename a todolist item ✍🏽📚](#rename-a-todolist-item--1)
+    - [Rename a todolist ✍🏽📚](#rename-a-todolist-)
     - [Delete a todolist 🗑📚](#delete-a-todolist-)
     - [Delete all current's user todolists 🗑📚📚📚📚](#delete-all-currents-user-todolists-)
 
@@ -403,7 +403,7 @@ with an email
 }
 ```
 ---
-### Rename a todolist item ✍🏽📚
+### Rename a todolist ✍🏽📚
 
 > ⚠ **You must use a bearer token to perform this action**
 
