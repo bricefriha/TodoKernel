@@ -22,9 +22,9 @@ TodoKernel is an API ready to go allowing you to create todolists. Then all you 
     - [Get all your todolists 📚](#get-all-your-todolists-)
     - [Check or uncheck a todolist item ✅❎📄](#check-or-uncheck-a-todolist-item-)
     - [Rename a todolist item ✍🏽📄](#rename-a-todolist-item-)
-    - [Delete a todolist item 🗑📚](#delete-a-todolist-item-)
-    - [Rename a todolist ✍🏽📚](#rename-a-todolist-)
     - [Delete a todolist 🗑📚](#delete-a-todolist-)
+    - [Rename a todolist ✍🏽📚](#rename-a-todolist-)
+    - [Delete a todolist 🗑📚](#delete-a-todolist--1)
     - [Delete all current's user todolists 🗑📚📚📚📚](#delete-all-currents-user-todolists-)
 
 ---
