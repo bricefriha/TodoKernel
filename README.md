@@ -387,13 +387,13 @@ with an email
 }
 ```
 ---
-### Delete a todolist item 🗑📚
+### Delete a todolist 🗑📚
 
 > ⚠ **You must use a bearer token to perform this action**
 
 **Request type**: DELETE
 
-**route**: ``"/todos/[Todolist id]"``
+**route**: ``"/todolists/[Todolist id]"``
 
 **response**: 
 ```JSON
