@@ -282,7 +282,7 @@ with an email
 
 **Request type**: POST
 
-**route**: ``"/todolists/create"``
+**route**: ``"/todos/add"``
 
 **body**: 
 ```JSON 
