@@ -30,7 +30,7 @@ TodoKernel is an API ready to go allowing you to create todolists. Then all you 
 ---
 ## Installation
 
-> **Make sure that node is installed on your machine/server** 😉
+> **Make sure that node and MongoDb are installed on your machine/server** 😉
 
 1. The very first step is to install is to fetch the TodoKernel project. To do so, you can:
 
@@ -183,14 +183,14 @@ with an email
 **route**: ``  "/users/forgot" ``
 
 **Body**:
-```
+```JSON
 {
 	"email": "brice.friha@outlook.com"
 	
 }
 ```
 **Response**:
-```
+```JSON
 {
     "status": "OK"
 }
@@ -203,7 +203,7 @@ with an email
 **route**: ``  "/users/recovery" ``
 
 **Body**:
-```
+```JSON
 {
 	"recoveryCode": "[recovery code sent via email]",
     "newPassword": "pwd"
@@ -213,7 +213,7 @@ with an email
 > ℹ it's worth noting that the user is automatically connected after this action
 
 **Response**:
-```
+```JSON
 {{
     "username": "BriceFriha",
     "email": "brice.friha@outlook.com",
