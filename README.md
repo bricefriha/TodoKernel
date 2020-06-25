@@ -58,7 +58,13 @@ TodoKernel is an API ready to go allowing you to create todolists. Then all you 
 
 5. Finally, the most important part: Enjoy! 😀
 
-
+---
+## Dependencies 🧷
+- ### Express:  [![Node version](https://img.shields.io/npm/v/express.svg?style=flat)](https://www.npmjs.com/package/express/)
+- ### Jwt: [![Node version](https://img.shields.io/npm/v/jsonwebtoken.svg?style=flat)](https://www.npmjs.com/package/jsonwebtoken)
+- ### Mongoose  [![Node version](https://img.shields.io/npm/v/mongoose.svg?style=flat)](https://www.npmjs.com/package/mongoose)
+- ### nodemailer [![Node version](https://img.shields.io/npm/v/nodemailer.svg?style=flat)](https://www.npmjs.com/package/nodemailer)
+---
 ## Api methods
 
 ### Registration 🔑
