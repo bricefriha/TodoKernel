@@ -23,7 +23,7 @@ const todoItemSchema = new Schema ({
         type: Schema.Types.ObjectId,
         ref: 'TodoList',
         require: true,
-    }
+    },
 });
 
 // On delete cascade
