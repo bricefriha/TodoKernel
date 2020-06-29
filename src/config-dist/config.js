@@ -7,7 +7,7 @@ module.exports = {
     Secret: process.env.SECRET ? process.env.SECRET : "[put your secret here]",
     serviceEmail: process.env.SERVICE_EMAIL ? process.env.SERVICE_EMAIL : "[Your email sevice (gmail, outlook, however...)]",
     Email: process.env.EMAIL ? process.env.EMAIL : "[Your email adress]",
-    PasswordEmail: process.env.PWD_EMAIL ? process.env.PWD_EMAIL : "[Password of your email account]",
+    PasswordEmail: process.env.PWD_EMAIL ? process.env.PWD_EMAIL : "[Password of your email acount]",
 
     // Set a public path
     publicPath: 'api',
