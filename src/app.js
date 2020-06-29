@@ -2,6 +2,7 @@ const createError = require('http-errors');
 const express = require('express');
 const path = require('path');
 const mongoose = require('mongoose');
+const autoIncrement = require('mongoose-auto-increment');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const cors = require('cors');
@@ -20,6 +21,10 @@ mongoose.connect(config.DB, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
+
+//var connection = mongoose.createConnection(config.DB);
+ 
+autoIncrement.initialize(mongoose);
 
 //enable cors
 app.use(cors());  
