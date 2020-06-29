@@ -17,9 +17,11 @@ const todoLists = require('./controllers/TodoLists');
 const app = express();
 
 mongoose.connect(config.DB, {
+  useCreateIndex: true,
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
+
 
 //enable cors
 app.use(cors());  
