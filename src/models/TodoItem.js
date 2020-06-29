@@ -49,7 +49,7 @@ const todoItemSchema = new Schema ({
 //       );
 //     });
 //   });
-todoItemSchema.plugin(autoIncrement.plugin, { model: 'TodoItem', field: 'Order' });
+todoItemSchema.plugin(autoIncrement.plugin, { model: 'TodoItem', field: 'order' });
 const TodoItem = mongoose.model('TodoItem', todoItemSchema);
 
 module.exports = TodoItem;

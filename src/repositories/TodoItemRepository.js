@@ -17,19 +17,9 @@ class TodoItemRepository {
         return item.save();
     } 
 
-    // Get all todos
-    findAll () {
-        return this.model.find();
-    }
-
     // Get all todos of a user
     async findByTodolist (todolistId, userId) {
-        return TodoItem.find({todolist: todolistId, user: userId});
-    }
-
-    // Find a specific todo
-    findById (id) {
-        return this.model.findById(id);
+        return TodoItem.find({todolist: todolistId, user: userId}).sort( { order: 1 } );
     }
 
     // Delete a specific item
