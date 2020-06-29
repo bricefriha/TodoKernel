@@ -23,8 +23,6 @@ mongoose.connect(config.DB, {
 });
 
 //var connection = mongoose.createConnection(config.DB);
- 
-autoIncrement.initialize(mongoose);
 
 //enable cors
 app.use(cors());  

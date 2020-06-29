@@ -1,9 +1,12 @@
 // Import mongoose
 const mongoose = require('mongoose');
+const autoIncrement = require('mongoose-auto-increment');
 const TodoList = require('../models/TodoList');
 const User = require('../models/User');
 
 const { Schema } = mongoose;
+
+autoIncrement.initialize(mongoose);
 
 // Define schema for todo items
 const todoItemSchema = new Schema ({
@@ -24,6 +27,11 @@ const todoItemSchema = new Schema ({
         ref: 'TodoList',
         require: true,
     },
+    order: {
+        type: Number,
+        ref: 'Order',
+        
+    },
 });
 
 // On delete cascade
@@ -41,6 +49,7 @@ const todoItemSchema = new Schema ({
 //       );
 //     });
 //   });
+todoItemSchema.plugin(autoIncrement.plugin, { model: 'TodoItem', field: 'Order' });
 const TodoItem = mongoose.model('TodoItem', todoItemSchema);
 
 module.exports = TodoItem;
