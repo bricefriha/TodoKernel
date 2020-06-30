@@ -76,6 +76,17 @@ router.put('/check/:id', (req, res) => {
         .then(data => data ? res.status(200).json(data) : res.status(403).json({ message: 'item not found' }))
         .catch(err => res.status(500).json({ status:"Error", message: err }));
 });
+// check todo item
+router.put('/move/:id', (req, res) => {
+    
+    // get the id
+    const { id } = req.params;
+
+    // update it
+    ItemRepo.move(id, req.body.todolistId, req.body.newPosition, req.user.sub)
+        .then(data => data ? res.status(200).json(data) : res.status(403).json({ message: 'item not found' }))
+        .catch(err => res.status(500).json({ status:"Error", message: err }));
+});
 
 module.exports = router;
 
