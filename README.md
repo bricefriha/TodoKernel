@@ -8,6 +8,8 @@ TodoKernel is an API ready to go allowing you to create todolists. Then all you 
 - [TodoKernel](#todokernel)
   - [Index 📖](#index-)
   - [Installation](#installation)
+  - [Dependencies 🧷](#dependencies-)
+  - [- ### nodemailer ![Node version](https://www.npmjs.com/package/nodemailer)](#ullih3-idnodemailer-node-version-111nodemailer-img-srchttpsimgshieldsionpmvnodemailersvgstyleflat-altnode-versionh3liul)
   - [Api methods](#api-methods)
     - [Registration 🔑](#registration-)
     - [Authentification 🙋🏽‍♂️🙋🏽‍♀️](#authentification-️️)
@@ -21,6 +23,7 @@ TodoKernel is an API ready to go allowing you to create todolists. Then all you 
     - [Delete an item from a todolist 🗑✏](#delete-an-item-from-a-todolist-)
     - [Get all your todolists 📚](#get-all-your-todolists-)
     - [Check or uncheck a todolist item ✅❎📄](#check-or-uncheck-a-todolist-item-)
+    - [Move a todolist item 📄 ↕](#move-a-todolist-item--)
     - [Rename a todolist item ✍🏽📄](#rename-a-todolist-item-)
     - [Delete a todolist 🗑📚](#delete-a-todolist-)
     - [Rename a todolist ✍🏽📚](#rename-a-todolist-)
@@ -220,7 +223,7 @@ with an email
 
 **Response**:
 ```JSON
-{{
+{
     "username": "BriceFriha",
     "email": "brice.friha@outlook.com",
     "firstName": "Brice",
@@ -306,6 +309,7 @@ with an email
     "done": false,
     "todolist": "5ed7f3d335670f2f348c8cbc",
     "user": "5ecd5cb5048a7231d8ddbb15",
+    "order": 0,
     "__v": 0
 }
 ```
@@ -343,6 +347,7 @@ with an email
         "_id": "5ed385135151de45f4b637df",
         "title": "Shopping list",
         "user": "5ecd5cb5048a7231d8ddbb15",
+        "order": 0,
         "__v": 2
     },
     {
@@ -351,6 +356,7 @@ with an email
         "_id": "5ed7f3d335670f2f348c8cbc",
         "title": "Shopping list",
         "user": "5ecd5cb5048a7231d8ddbb15",
+        "order": 1,
         "__v": 1
     }
 ]
@@ -368,6 +374,30 @@ with an email
 ```JSON
 {
     "status": "OK"
+}
+```
+---
+### Move a todolist item 📄 ↕
+
+> ⚠ **You must use a bearer token to perform this action**
+
+**Request type**: PUT
+
+**Route**: ``"/todos/move/[Todolist id]"``
+
+**Body**: 
+```JSON
+{
+	"newPosition": "[the new position (order attribut)]",
+    "todolistId": "[todolist in which you want to put it]"
+	
+}
+```
+
+**Response**: 
+```JSON
+{
+	"name": "Fries"	
 }
 ```
 ---
