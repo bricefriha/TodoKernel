@@ -1,7 +1,7 @@
 # TodoKernel 
 You want to create a todolist app without bothering too much with a backend code. Here's how TodoKernel can help you! 😃
 
-TodoKernel is an API ready to go allowing you to create todolists. Then all you have to do  is to create a sweat little UI that fit your need! 😊 ("have to do", "todo" you get it? 😅)
+TodoKernel is an API ready to go allowing you to create todolists. Then all you have to do  is to create a sweat little UI that fit your need! 😊 ("have to do", "todo" you get the pun? 😅)
 
 ---
 ## Index 📖
