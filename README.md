@@ -9,6 +9,7 @@ TodoKernel is an API ready to go allowing you to create todolists. Then all you 
   - [Index 📖](#index-)
   - [Installation](#installation)
   - [Dependencies 🧷](#dependencies-)
+  - [- ### nodemailer ![Node version](https://www.npmjs.com/package/nodemailer)](#ullih3-idnodemailer-node-version-81nodemailer-img-srchttpsimgshieldsionpmvnodemailersvgstyleflat-altnode-versionh3liul)
   - [Api methods](#api-methods)
     - [Registration 🔑](#registration-)
     - [Authentification 🙋🏽‍♂️🙋🏽‍♀️](#authentification-️️)
@@ -22,6 +23,7 @@ TodoKernel is an API ready to go allowing you to create todolists. Then all you 
     - [Delete an item from a todolist 🗑✏](#delete-an-item-from-a-todolist-)
     - [Get all your todolists 📚](#get-all-your-todolists-)
     - [Check or uncheck a todolist item ✅❎📄](#check-or-uncheck-a-todolist-item-)
+    - [Get all items of a todolist](#get-all-items-of-a-todolist)
     - [Move a todolist item 📄 ↕](#move-a-todolist-item--)
     - [Rename a todolist item ✍🏽📄](#rename-a-todolist-item-)
     - [Delete a todolist 🗑📚](#delete-a-todolist-)
@@ -373,6 +375,22 @@ with an email
 ```JSON
 {
     "status": "OK"
+}
+```
+---
+### Get all items of a todolist
+
+> ⚠ **You must use a bearer token to perform this action**
+
+**Request type**: GET
+
+**Route**: `` "/todos/get" ``
+
+**Body**: 
+```JSON
+{
+    "todolistId": "[todolist in which you want to put it]"
+	
 }
 ```
 ---
