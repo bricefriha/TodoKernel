@@ -9,7 +9,6 @@ TodoKernel is an API ready to go allowing you to create todolists. Then all you 
   - [Index 📖](#index-)
   - [Installation](#installation)
   - [Dependencies 🧷](#dependencies-)
-  - [- ### nodemailer ![Node version](https://www.npmjs.com/package/nodemailer)](#ullih3-idnodemailer-node-version-81nodemailer-img-srchttpsimgshieldsionpmvnodemailersvgstyleflat-altnode-versionh3liul)
   - [Api methods](#api-methods)
     - [Registration 🔑](#registration-)
     - [Authentification 🙋🏽‍♂️🙋🏽‍♀️](#authentification-️️)
